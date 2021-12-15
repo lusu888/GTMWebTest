@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Github Page demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    
+    
+    <script>
+      /**
+       * [通过参数名获取url中的参数值]
+       * 示例URL:http://htmlJsTest/getrequest.html?uid=admin&rid=1&fid=2&name=小明
+       * @param  {[string]} queryName [参数名]
+       * @return {[string]}           [参数值]
+       */
+      function GetQueryValue(queryName) {
+          var query = decodeURI(window.location.search.substring(1));
+          var vars = query.split("&");
+          for (var i = 0; i < vars.length; i++) {
+              var pair = vars[i].split("=");
+              if (pair[0] == queryName) { return pair[1]; }
+          }
+          return null;
+      }
+      var productIndex = GetQueryValue("productIndex")
+      console.log(productIndex)
+      var arrayProductObj;
+      arrayProductObj = [
+           {
+             item_name: "Triblend Android T-Shirt",       // Name or ID is required.
+             item_id: "12345",
+             price: 15.25,
+             item_brand: "Google",
+             item_category: "Apparel",
+             item_category2: "Mens",
+             item_category3: "Shirts",
+             item_category4: "Tshirts",
+             item_variant: "Gray",
+             item_list_name: "Search Results",
+             item_list_id: "SR123",
+             index: 1,
+             quantity: 1,
+             currency:"USD"
+           },
+           {
+             item_name: "Donut Friday Scented T-Shirt",
+             item_id: "67890",
+             price: 33,
+             item_brand: "Google",
+             item_category: "Apparel",
+             item_category2: "Mens",
+             item_category3: "Shirts",
+             item_category4: "Tshirts",
+             item_variant: "Black",
+             item_list_name: "Search Results",
+             item_list_id: "SR123",
+             index: 2,
+             quantity: 1,
+             currency:"USD",
+           }
+      ]
+      
+            // Measure product views / impressions
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+      
+
+      dataLayer.push({
+        event: "add_to_cart",
+        ecommerce:{items: [arrayProductObj[productIndex]]},
+      });
+    </script>
+
+    <script src="index.js"></script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-P9TWJD3');</script>
+    <!-- End Google Tag Manager -->
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9TWJD3"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="main-content">
+      <div><h2>GTM DTM Test</h2></div>
+      <div><h3>My Cart</h3></div>
+      
+      <div class="card card_detals" onclick="cardclick(0)">
+        <img src="image/tshirt01.jfif" alt="Avatar" style="width:100%">
+        <div class="container">
+          <h4><b>Triblend Android T-Shirt</b></h4> 
+          <p id="productDetails"></p>
+          <button class="button button1" id="btn_cart">Purchase</button>
+
+        </div>
+      </div>
+    <!-- 
+      <div>
+        <button class="button button1" id="btn_cart">Triblend Android T-Shirt</button>
+      </div>
+      -->
+    </div>
+    <script>
+      var productDes = document.getElementById("productDetails");
+      productDes.innerHTML = JSON.stringify(arrayProductObj[productIndex]); 
+ 
+
+      function cardclick(productIndex){
+              dataLayer.push({ecommerce: null});
+              dataLayer.push({
+                event:"begin_checkout",
+                ecommerce:{
+                  items:[araryProductObj[productIndex]]
+                }
+              });
+              window.location.href="purchase?productIndex"=productIndex
+     
+      }
+
+    </script>
+
+</body>
+</html>
