@@ -7,15 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     
-
+    
     <script>
-      // Measure product views / impressions
-      window.dataLayer = window.dataLayer || [];
-      dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-      dataLayer.push({
-        event: "view_item_list",
-        ecommerce: {
-          items: [
+      var araryProductObj;
+      araryProductObj = [
            {
              item_name: "Triblend Android T-Shirt",       // Name or ID is required.
              item_id: "12345",
@@ -47,8 +42,16 @@
              index: 2,
              quantity: 1,
              currency:"USD",
-           }]
-        }
+           }
+      ]
+        
+ 
+      // Measure product views / impressions
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+      dataLayer.push({
+        event: "view_item_list",
+        ecommerce:{items: araryProductObj} 
       });
     </script>
 
@@ -92,7 +95,7 @@
         <img src="image/tshirt02.jfif" alt="Avatar" style="width:100%">
         <div class="container">
           <h4><b>Donut Friday Scented T-Shirt</b></h4> 
-          <p>$33.75</p> 
+          <p>$33.00</p> 
         </div>
       </div>
       <!-- 
