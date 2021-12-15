@@ -62,10 +62,7 @@
            }
       ]
       
-      var productDes = document.getElementById("productDetails");
-      productDes.innerHTML = arrayProductObj.stringify(); 
- 
-      // Measure product views / impressions
+            // Measure product views / impressions
       window.dataLayer = window.dataLayer || [];
       dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
       
@@ -108,6 +105,10 @@
       -->
     </div>
     <script>
+      var productDes = document.getElementById("productDetails");
+      productDes.innerHTML = arrayProductObj.toString; 
+ 
+
       function cardclick(productIndex){
 /**********
               dataLayer.push({ecommerce: null});
