@@ -24,8 +24,8 @@
           }
           return null;
       }
-
-
+      var productIndex = GetQueryValue("productIndex")
+      console.log(productIndex)
       var arrayProductObj;
       arrayProductObj = [
            {
@@ -61,13 +61,14 @@
              currency:"USD",
            }
       ]
-      document.getElementsById("productDetails").innerHTML = arrayProductObj 
+      
+      var productDes = document.getElementById("productDetails");
+      productDes.innerHTML = arrayProductObj 
  
       // Measure product views / impressions
       window.dataLayer = window.dataLayer || [];
       dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
       
-      productIndex = GetQueryValue("productIndex")
 
       dataLayer.push({
         event: "view_item",
