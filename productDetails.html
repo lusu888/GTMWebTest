@@ -91,11 +91,13 @@
       <div><h2>GTM DTM Test</h2></div>
       <div><h3>View Product Item</h3></div>
       
-      <div class="card" onclick="cardclick(0)">
+      <div class="card card_detals" onclick="cardclick(0)">
         <img src="image/tshirt01.jfif" alt="Avatar" style="width:100%">
         <div class="container">
           <h4><b>Triblend Android T-Shirt</b></h4> 
-          <p id="productDetails"></p> 
+          <p id="productDetails"></p>
+          <button class="button button1" id="btn_cart">Add to Cart</button>
+
         </div>
       </div>
     <!-- 
@@ -106,7 +108,7 @@
     </div>
     <script>
       var productDes = document.getElementById("productDetails");
-      productDes.innerHTML = arrayProductObj.toString; 
+      productDes.innerHTML = JSON.stringify(arrayProductObj[productIndex]); 
  
 
       function cardclick(productIndex){
@@ -119,7 +121,7 @@
                 }
               });
      **********/
-              window.location.href="http://www.baidu.com"
+              window.location.href="addtocart"
      
       }
 
