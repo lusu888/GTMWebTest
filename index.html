@@ -10,27 +10,44 @@
 
     <script>
       window.dataLayer = window.dataLayer || [];
+      // Measure product views / impressions
       dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
       dataLayer.push({
-        event: "begin_checkout",
+        event: "view_item_list",
         ecommerce: {
-          items: [{
-            item_name: "Donut Friday Scented T-Shirt", // Name or ID is required.
-            item_id: "67890",
-            price: 33.75,
-            item_brand: "Google",
-            item_category: "Apparel",
-            item_category2: "Mens",
-            item_category3: "Shirts",
-            item_category4: "Tshirts",
-            item_variant: "Black",
-            item_list_name: "Search Results",
-            item_list_id: "SR123",
-            index: 1,
-            quantity: 1
-          }]
+          items: [
+           {
+             item_name: "Triblend Android T-Shirt",       // Name or ID is required.
+             item_id: "12345",
+             price: 15.25,
+             item_brand: "Google",
+             item_category: "Apparel",
+             item_category2: "Mens",
+             item_category3: "Shirts",
+             item_category4: "Tshirts",
+             item_variant: "Gray",
+             item_list_name: "Search Results",
+             item_list_id: "SR123",
+             index: 1,
+             quantity: 1
+           },
+           {
+             item_name: "Donut Friday Scented T-Shirt",
+             item_id: "67890",
+             price: 33.75,
+             item_brand: "Google",
+             item_category: "Apparel",
+             item_category2: "Mens",
+             item_category3: "Shirts",
+             item_category4: "Tshirts",
+             item_variant: "Black",
+             item_list_name: "Search Results",
+             item_list_id: "SR123",
+             index: 2,
+             quantity: 1
+           }]
         }
-      });
+      }); 
     </script>
 
     <script src="index.js"></script>
@@ -49,6 +66,8 @@
     <!-- End Google Tag Manager (noscript) -->
     <div id="main-content">
       <div><h2>GTM DTM Test</h2></div>
+      <div><h3>View Product Item List</h3></div>
+      <!--
       <div id="cookie_div">
         <div style="display:inline-block;width:150px"><p>Agree Cookie</p></div>
         <div style="display:inline-block;width:100px">
@@ -58,9 +77,77 @@
           </label>
         </div>
       </div>
-      <div>
-        <button class="button button1" id="btn_cart">Buy and go to Cart</button>
+      -->
+
+      <div class="card" onclick="card1click()">
+        <img src="image/tshirt01.jfif" alt="Avatar" style="width:100%">
+        <div class="container">
+          <h4><b>Triblend Android T-Shirt</b></h4> 
+          <p>$15.25</p> 
+        </div>
       </div>
+      <div class="card" onclick="card2click()">
+        <img src="image/tshirt02.jfif" alt="Avatar" style="width:100%">
+        <div class="container">
+          <h4><b>Donut Friday Scented T-Shirt</b></h4> 
+          <p>$33.75</p> 
+        </div>
+      </div>
+      <!-- 
+      <div>
+        <button class="button button1" id="btn_cart">Triblend Android T-Shirt</button>
+      </div>
+      -->
     </div>
+    <script>
+      function card1click(){
+              dataLayer.push({ecommerce: null});
+              dataLayer.push({
+                event:"select_item",
+                ecommerce:{
+                  items:[{
+                     item_name: "Triblend Android T-Shirt",       // Name or ID is required.
+                     item_id: "12345",
+                     price: 15.25,
+                     item_brand: "Google",
+                     item_category: "Apparel",
+                     item_category2: "Mens",
+                     item_category3: "Shirts",
+                     item_category4: "Tshirts",
+                     item_variant: "Gray",
+                     item_list_name: "Search Results",
+                     item_list_id: "SR123",
+                     index: 1,
+                     quantity: 1
+                  }]
+                }
+              });
+              window.location.href="http://www.baidu.com"
+      }
+      function card2click(){
+              dataLayer.push({ecommerce: null});
+              dataLayer.push({
+                event:"select_item",
+                ecommerce:{
+                  items:[{
+                    item_name: "Donut Friday Scented T-Shirt",
+                    item_id: "67890",
+                    price: 33.75,
+                    item_brand: "Google",
+                    item_category: "Apparel",
+                    item_category2: "Mens",
+                    item_category3: "Shirts",
+                    item_category4: "Tshirts",
+                    item_variant: "Black",
+                    item_list_name: "Search Results",
+                    item_list_id: "SR123",
+                    index:1 ,
+                    quantity: 1        
+                  }]
+                }
+              });
+      }
+    </script>
+
 </body>
 </html>
