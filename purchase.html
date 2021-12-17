@@ -61,16 +61,40 @@
              currency:"USD",
            }
       ]
+
+      purchaseObj = {
+        event: "purchase",
+        ecommerce: {
+            transaction_id: "T12345",
+            affiliation: "Online Store",
+            value: "59.89",
+            tax: "4.90",
+            shipping: "5.99",
+            currency: "EUR",
+            coupon: "SUMMER_SALE",
+            items: [{
+              item_name: "Triblend Android T-Shirt",
+              item_id: "12345",
+              price: "15.25",
+              item_brand: "Google",
+              item_category: "Apparel",
+              item_variant: "Gray",
+              quantity: 1
+            }, {
+              item_name: "Donut Friday Scented T-Shirt",
+              item_id: "67890",
+              price: 33.75,
+              item_brand: "Google",
+              item_category: "Apparel",
+              item_variant: "Black",
+              quantity: 1
+            }]
+        }
+      } 
       
-            // Measure product views / impressions
       window.dataLayer = window.dataLayer || [];
       dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-      
-
-      dataLayer.push({
-        event: "add_to_cart",
-        ecommerce:{items: [arrayProductObj[productIndex]]},
-      });
+      dataLayer.push(purchaseObj);
     </script>
 
     <script src="index.js"></script>
@@ -89,14 +113,14 @@
     <!-- End Google Tag Manager (noscript) -->
     <div id="main-content">
       <div><h2>GTM DTM Test</h2></div>
-      <div><h3>My Cart</h3></div>
+      <div><h3>Purchase</h3></div>
       
       <div class="card card_detals" onclick="cardclick(0)">
         <img src="image/tshirt01.jfif" alt="Avatar" style="width:100%">
         <div class="container">
           <h4><b>Triblend Android T-Shirt</b></h4> 
           <p id="productDetails"></p>
-          <button class="button button1" id="btn_cart">Purchase</button>
+          <button class="button button1" id="btn_cart">Go to Home</button>
 
         </div>
       </div>
@@ -110,18 +134,8 @@
       var productDes = document.getElementById("productDetails");
       productDes.innerHTML = JSON.stringify(arrayProductObj[productIndex]); 
  
-
-      function cardclick(productIndex){
-              dataLayer.push({ecommerce: null});
-              dataLayer.push({
-                event:"begin_checkout",
-                ecommerce:{
-                  items:[arrayProductObj[productIndex]]
-                }
-              });
-              window.location.href="purchase.html?productIndex=" + productIndex
+      window.location.href="/?productIndex" + productIndex
      
-      }
 
     </script>
 
